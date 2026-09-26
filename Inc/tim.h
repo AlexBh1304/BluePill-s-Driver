@@ -28,6 +28,7 @@ void TimDisable(TIM_t* TIMx);
 void TimSetFrecuency(uint32_t UpdateFrecuency, TIM_t* TIMx);
 uint8_t TimFlagStatus(TIM_t* TIMx, uint8_t FlagMask);
 
+void TimClearFlag(TIM_t* TIMx, uint8_t FlagMask);
 #define TIM_SR_FLAG_UI	0x01U
 
 #endif
