@@ -4,8 +4,6 @@
  * @author Alex
  */
 
-
-
 #include "gpio.h"
 
 /**
@@ -34,16 +32,15 @@ void Gpio_Init(GPIOx_Config_t* pGpioConfig, GPIO_t* pGPIO){
 	pGPIO->CRL |= (pGpioConfig->Mode << (pGpioConfig->Pin * 4));
 	}
 
-	}else if(pGpioConfig->Pin < 8){
+	}else if(pGpioConfig->Pin > 7 && pGpioConfig->Pin < 15){
 	
 	//Check if its configured as an output or as an input checking wether the first bit is a 1 (output) 0 (input)
 	
 	//Output
 	if((pGpioConfig->Mode) & (0b1)){
-	
 
-	pGPIO->CRH &= ~(0xF << ((pGpioConfig->Pin % 8) * 4));
-	pGPIO->CRH |= (((((pGpioConfig->Mode) & ~(0b1)) | pGpioConfig->OutputSpeed) << ((pGpioConfig->Pin % 8) * 4) ));
+		pGPIO->CRH &= ~(0xF << ((pGpioConfig->Pin % 8) * 4));
+		pGPIO->CRH |= (((((pGpioConfig->Mode) & ~(0b1)) | pGpioConfig->OutputSpeed) << ((pGpioConfig->Pin % 8) * 4) ));
 
 	}else{//Input
 
@@ -82,9 +79,6 @@ void Gpio_Pin_Reset(GPIO_t* pGPIO, uint8_t PinNumber){
 /**
  *
  * @brief Toggle a specific GPIO pin
- *
- *
- *
  *
  *
  */

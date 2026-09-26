@@ -9,6 +9,8 @@
 #ifndef STM32F1XX_H
 #define STM32F1XX_H
 
+#include <stdint.h>
+
 #define DISABLE 0
 #define ENABLE 1
 
@@ -31,11 +33,11 @@ typedef struct{
 #define GPIOE_BASE_ADDRESS	0x40011800UL
 
 
-#define GPIOA			((Gpio_t*) GPIOA_BASE_ADDRESS)			
-#define GPIOB			((Gpio_t*) GPIOB_BASE_ADDRESS)			
-#define GPIOC			((Gpio_t*) GPIOC_BASE_ADDRESS)			
-#define GPIOD			((Gpio_t*) GPIOD_BASE_ADDRESS)			
-#define GPIOE			((Gpio_t*) GPIOE_BASE_ADDRESS)			
+#define GPIOA			((GPIO_t*) GPIOA_BASE_ADDRESS)			
+#define GPIOB			((GPIO_t*) GPIOB_BASE_ADDRESS)			
+#define GPIOC			((GPIO_t*) GPIOC_BASE_ADDRESS)			
+#define GPIOD			((GPIO_t*) GPIOD_BASE_ADDRESS)			
+#define GPIOE			((GPIO_t*) GPIOE_BASE_ADDRESS)			
 
 //RCC
 
@@ -57,6 +59,42 @@ typedef struct{
 
 #define RCC_BASE_ADDRESS	0x40021000UL
 
-#define RCC			((Rcc_t*) RCC_BASE_ADDRESS)			
+#define RCC			((RCC_t*) RCC_BASE_ADDRESS)			
+
+
+typedef struct{
+	volatile uint32_t CR1;
+	volatile uint32_t CR2;
+	volatile uint32_t SMCR;
+	volatile uint32_t DIER;
+	volatile uint32_t SR;
+	volatile uint32_t EGR;
+	volatile uint32_t CCMR1;
+	volatile uint32_t CCMR2;
+	volatile uint32_t CCER;
+	volatile uint32_t CNT;
+	volatile uint32_t PSC;
+	volatile uint32_t ARR;
+	volatile uint32_t RCR;
+	volatile uint32_t CCR1;
+	volatile uint32_t CCR2;
+	volatile uint32_t CCR3;
+	volatile uint32_t CCR4;
+	volatile uint32_t BDTR;
+	volatile uint32_t DCR;
+	volatile uint32_t DMAR;
+}TIM_t;
+
+#define TIM1_BASE_ADDRESS	0x40012C00UL
+#define TIM2_BASE_ADDRESS	0x40000000UL
+#define TIM3_BASE_ADDRESS	0x40000400UL
+#define TIM4_BASE_ADDRESS	0x40000800UL
+
+#define TIM1	((TIM_t*)(TIM1_BASE_ADDRESS))
+#define TIM2	((TIM_t*)(TIM2_BASE_ADDRESS))
+#define TIM3	((TIM_t*)(TIM3_BASE_ADDRESS))
+#define TIM4	((TIM_t*)(TIM4_BASE_ADDRESS))
+
+#define TIMx_CR1_CEN	0
 
 #endif
