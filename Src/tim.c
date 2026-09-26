@@ -52,6 +52,6 @@ uint8_t TimFlagStatus(TIM_t* TIMx, uint8_t FlagMask){
 
 void TimClearFlag(TIM_t* TIMx, uint8_t FlagMask){
 
-	TIMx->SR &= ~(1 << FlagMask);
+	TIMx->SR &= ~(FlagMask);
 
 }
