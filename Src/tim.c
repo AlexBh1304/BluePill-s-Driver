@@ -17,7 +17,7 @@ void TimInit(Timer_Config* pTimConfig, TIM_t* TIMx){
 
 	TIMx->ARR = pTimConfig->ARR;
 	TIMx->PSC = pTimConfig->PSC;
-
+	TIMx->CCR1 = pTimConfig->CCR1;
 }
 
 void TimEnable(TIM_t* TIMx){
@@ -55,3 +55,11 @@ void TimClearFlag(TIM_t* TIMx, uint8_t FlagMask){
 	TIMx->SR &= ~(FlagMask);
 
 }
+
+
+void TimInterruptEnable(TIM_t* TIMx, uint8_t InterruptName){
+
+		TIMx->DIER |= (1 << InterruptName);
+
+}
+

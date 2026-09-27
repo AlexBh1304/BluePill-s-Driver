@@ -97,4 +97,16 @@ typedef struct{
 
 #define TIMx_CR1_CEN	0
 
+typedef struct{
+
+	volatile uint32_t ISER[3] ;
+
+}NVIC_t;
+
+
+#define NVIC_BASE_ADDRESS	0xE000E100UL
+
+#define NVIC	((NVIC_t*)(NVIC_BASE_ADDRESS))
+
+
 #endif
