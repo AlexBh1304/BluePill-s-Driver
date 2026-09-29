@@ -79,11 +79,11 @@ void Gpio_Pin_Reset(GPIO_t* pGPIO, uint8_t PinNumber){
 /**
  *
  * @brief Toggle a specific GPIO pin
- *
+*
  *
  */
 void Gpio_Pin_Toggle(GPIO_t* pGPIO, uint8_t PinNumber){
-	
+
 	if(pGPIO->ODR & (1 << PinNumber)){
 
 	Gpio_Pin_Reset(pGPIO, PinNumber);

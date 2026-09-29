@@ -16,4 +16,9 @@
 
 void GPIOxClockControl(GPIO_t* pGPIO, uint8_t Action);
 void TIMxClockControl(TIM_t* pTIM, uint8_t Action);
+void ChangeSysClockPLL();
+
+
+
+
 #endif

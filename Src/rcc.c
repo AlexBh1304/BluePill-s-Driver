@@ -96,6 +96,46 @@ void TIMxClockControl(TIM_t* pTIM, uint8_t Action){
 	}
 
 
-void TIMxClockControl(TIM_t* pTIM, uint8_t Action);}
+
+}
 
 
+
+
+void ChangeSysClockPLL(){
+
+volatile uint32_t* tempreg;
+    uint32_t temp = 0;
+    temp = ((1 << RCC_CFGR_PLLSRC)|(0x2 << RCC_CFGR_PLLMUL));
+    RCC->CFGR |= temp;
+    
+    RCC->CR |= (1 << RCC_CR_HSEON); //ENABLE THE HSE CLOCK
+    
+    //WAIT UNTIL HSE IS READY
+    while(!((RCC->CR & (1 << RCC_CR_HSERDY))));
+
+    //ENABLE PLL
+    RCC->CR |= (1 << RCC_CR_PLLON);
+
+    //WAIT until PLL is ready
+    
+    while(!((RCC->CR) & (1 << RCC_CR_PLLRDY)));
+    
+    //SWITCH system clock source
+    tempreg =(volatile uint32_t*)(FLASH_ACR_BASE_ADDRESS);
+    *tempreg |= (0x1);
+
+    RCC->CFGR |= (0x2 << RCC_CFGR_SW);
+    
+    //TURN OFF HSI
+    RCC->CR &= ~(1 << RCC_CR_HSION);
+}
+
+
+
+
+
+
+
+
+    

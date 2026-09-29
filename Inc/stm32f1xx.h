@@ -62,6 +62,25 @@ typedef struct{
 #define RCC			((RCC_t*) RCC_BASE_ADDRESS)			
 
 
+
+#define RCC_CR_OFFSET        	(0x0UL)
+#define RCC_CFGR_OFFSET   	(0x04UL)
+#define RCC_APB2ENR_OFFSET      (0x18UL)
+#define RCC_APB2ENR_IOPAEN    	2
+
+#define RCC_CFGR_PLLSRC        	16
+#define RCC_CFGR_PLLMUL        	18
+#define RCC_CFGR_MCO        	24
+#define RCC_CFGR_SW        	0
+
+#define RCC_CR_HSION        	0
+#define RCC_CR_HSEON        	16
+#define RCC_CR_HSERDY        	(17UL)
+#define RCC_CR_PLLON        	24
+#define RCC_CR_PLLRDY        	(25UL)
+
+#define FLASH_ACR_BASE_ADDRESS	(0x40022000UL)
+
 typedef struct{
 	volatile uint32_t CR1;
 	volatile uint32_t CR2;
