@@ -128,4 +128,39 @@ typedef struct{
 #define NVIC	((NVIC_t*)(NVIC_BASE_ADDRESS))
 
 
+
+typedef struct{
+	
+	uint32_t SR;
+	uint32_t CR1;
+	uint32_t CR2;
+	uint32_t SMPR1;
+	uint32_t SMPR2;
+	uint32_t JOFR1;
+	uint32_t JOFR2;
+	uint32_t JOFR3;
+	uint32_t JOFR4;
+	uint32_t HTR;
+	uint32_t LTR;
+	uint32_t SQR1;
+	uint32_t SQR2;
+	uint32_t SQR3;
+	uint32_t JSQR;
+	uint32_t JDR1;
+	uint32_t JDR2;
+	uint32_t JDR3;
+	uint32_t JDR4;
+	uint32_t DR;
+
+}ADC_t;
+
+
+#define ADC1_BASE_ADDRESS	0x40012400UL
+#define ADC2_BASE_ADDRESS	0x40012800UL
+
+
+#define ADC1	((ADC_t*)(ADC1_BASE_ADDRESS))
+#define ADC2	((ADC_t*)(ADC2_BASE_ADDRESS))
+
+
 #endif

@@ -1,4 +1,4 @@
-
+;
 #include "rcc.h"
 
 
@@ -133,6 +133,36 @@ volatile uint32_t* tempreg;
 
 
 
+
+
+
+
+void ADCxClockControl(ADC_t* pADC, uint8_t Action){
+	if(Action == ENABLE){
+		switch ((uint32_t)pADC){
+			case ADC1_BASE_ADDRESS:
+			RCC->APB2ENR |= (1 << 9);
+			break;
+
+			case ADC2_BASE_ADDRESS:
+			RCC->APB2ENR |= (1 << 10);
+			break;
+
+		}
+	}else if(Action == DISABLE){
+		switch ((uint32_t)pADC){
+			case ADC1_BASE_ADDRESS:
+			RCC->APB2ENR &= ~(1 << 9);
+			break;
+
+			case ADC2_BASE_ADDRESS:
+			RCC->APB2ENR &= ~(1 << 10);
+			break;
+
+		}
+	}
+
+}
 
 
 
